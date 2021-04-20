@@ -1,4 +1,4 @@
-N, K = map(int, input().split())
+""" N, K = map(int, input().split())
 
 coin = []
 result = 0
@@ -22,4 +22,19 @@ else:
                     K -= (j-1)*coin[N-1-i]
                     result += (j-1)
                     break               
-print(result)
+print(result) """
+
+n, k  = map(int, input().split())
+arr = []
+for i in range(0,n):
+    tmp = int(input())
+    arr.append(tmp)
+coins = sorted(arr, reverse=True)
+
+count =0
+for coin in coins:
+    tmp1 = 0 
+    tmp1 = k//coin
+    k -= tmp1*coin
+    count += tmp1
+print(count)
