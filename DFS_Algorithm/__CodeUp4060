@@ -1,8 +1,12 @@
+#왜 tmp1 tmp2 graph 는 같이 변함?
+
+# shallow copy와 deep copy의 차이
+
 def dfs(i,j):
     if i<0 or j<0 or i>=m or j>=n:
         return False
-    if graph[i][j]==0:
-        graph[i][j] = 2
+    if tmp1[i][j]==0:
+        tmp1[i][j] = 1
         dfs(i+1,j)
         dfs(i,j+1)
         dfs(i-1,j)
@@ -13,8 +17,8 @@ def dfs(i,j):
 def dfs2(i,j):
     if i<0 or j<0 or i>=m or j>=n:
         return False
-    if graph[i][j]==1:
-        graph[i][j] = 2
+    if tmp2[i][j]==1:
+        tmp2[i][j] = 0
         dfs2(i+1,j)
         dfs2(i,j+1)
         dfs2(i-1,j)
@@ -25,18 +29,29 @@ def dfs2(i,j):
 m,n = map(int, input().split())
 
 graph=[]
+tmp1 = []
+tmp2 = []
 for i in range(m):
     graph.append(list(map(int, input().split())))
+tmp1 = graph
+tmp2 = graph
+print(graph)
+print(tmp1)
+print(tmp2)
 
 result1, result2 = 0, 0 
 for i in range(m):
     for j in range(n):
         if dfs(i,j) == True:
             result1 += 1
+print(graph)
+print(tmp1)
+print(tmp2)
 for i in range(m):
     for j in range(n):
         if dfs2(i, j) == True:
             result2 += 1
+            print("2:","i",i,"j",j)
 print(result1, result2)
 
 

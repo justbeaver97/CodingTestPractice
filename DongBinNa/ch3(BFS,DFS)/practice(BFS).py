@@ -21,3 +21,23 @@ def bfs(graph, start, visited):
 graph = [[],[2,3,8],[1,7],[1,4,5],[3,5],[3,4],[7],[2,6,8],[1,7]]
 visited = [False]*9
 bfs(graph, 1, visited)
+
+print()
+
+def bfs2(start):
+    queue = deque([start])
+    visited2[start] = True
+    while queue:
+        v = queue.popleft()
+        for i in graph2[v]:
+            if not visited2[i]:
+                queue.append(i)
+                visited2[i] = True
+                print(visited2)
+                stack.append(i)
+stack = []
+graph2 = [[],[2,3,8],[1,7],[1,4,5],[3,5],[3,4],[7],[2,6,8],[1,7]]
+visited2 = [False]*9
+bfs2(1)
+print()
+print(stack, len(stack))

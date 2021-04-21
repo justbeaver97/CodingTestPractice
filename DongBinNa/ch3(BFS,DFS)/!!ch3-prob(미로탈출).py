@@ -32,9 +32,10 @@ def bfs(x,y):
                 continue
             if graph[nx][ny] == 1:
                 graph[nx][ny] = graph[x][y] + 1
-                print('x:',x,'y:',y,end=' ')
-                print('graph[nx][ny]:',graph[nx][ny], end=' ')
-                print('graph[x][y]:',graph[x][y])
+                # print('x:',x,'y:',y,end=' ')
+                # print('graph[nx][ny]:',graph[nx][ny], end=' ')
+                # print('graph[x][y]:',graph[x][y])
+                stack.append([x,y])
                 queue.append((nx,ny))
     return graph[n-1][m-1]
             
@@ -43,7 +44,7 @@ def bfs(x,y):
 from collections import deque
 
 n, m = map(int, input().split())
-
+stack = []
 graph = []
 for i in range(0,n):
     graph.append(list(map(int,input())))
@@ -52,6 +53,8 @@ dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
 
 print(bfs(0,0))
+print(stack)
+print(graph)
 
 """ 5 6
 101010
